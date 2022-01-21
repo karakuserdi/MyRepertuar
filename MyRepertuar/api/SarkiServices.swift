@@ -76,25 +76,4 @@ class RepertuarServices{
             }
         }
     }
-    
-    func getSoungLyric(id:Int, completion: @escaping(String) -> Void){
-        let params :Parameters = ["id":id]
-        
-        AF.request("https://www.myrepertuar.com/api/json/sarki/getSarkiForSarkiSozuModal", method: .post, parameters: params).response{ response in
-            
-            if let data = response.data{
-                do {
-                    let soungsData = try JSONDecoder().decode(SozleriResponse.self, from: data)
-                    print(soungsData)
-                    
-                } catch {
-                    print(error)
-                }
-            }
-            ///son
-        }
-    }
-
-    
-    
 }

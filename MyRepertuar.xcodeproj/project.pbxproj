@@ -23,7 +23,6 @@
 		D4CBB7DA279971D40027A34D /* ArtistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CBB7D9279971D40027A34D /* ArtistViewController.swift */; };
 		D4CBB7DD279972030027A34D /* ArtistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CBB7DC279972030027A34D /* ArtistCell.swift */; };
 		D4CBB7DF27997D570027A34D /* LyricViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CBB7DE27997D570027A34D /* LyricViewController.swift */; };
-		D4CBB7E127997F8F0027A34D /* SarkiLyric.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CBB7E027997F8F0027A34D /* SarkiLyric.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +43,6 @@
 		D4CBB7D9279971D40027A34D /* ArtistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistViewController.swift; sourceTree = "<group>"; };
 		D4CBB7DC279972030027A34D /* ArtistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCell.swift; sourceTree = "<group>"; };
 		D4CBB7DE27997D570027A34D /* LyricViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricViewController.swift; sourceTree = "<group>"; };
-		D4CBB7E027997F8F0027A34D /* SarkiLyric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SarkiLyric.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +98,6 @@
 				D4CBB7D0279812080027A34D /* SanatcilarIn.swift */,
 				D4CBB7D427996C8E0027A34D /* SarkilarOut.swift */,
 				D4CBB7D627996DB00027A34D /* SarkilarIn.swift */,
-				D4CBB7E027997F8F0027A34D /* SarkiLyric.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -213,7 +210,6 @@
 				D4CBB7AC27975A090027A34D /* ViewController.swift in Sources */,
 				D4CBB7A827975A090027A34D /* AppDelegate.swift in Sources */,
 				D4CBB7AA27975A090027A34D /* SceneDelegate.swift in Sources */,
-				D4CBB7E127997F8F0027A34D /* SarkiLyric.swift in Sources */,
 				D4CBB7D1279812080027A34D /* SanatcilarIn.swift in Sources */,
 				D4CBB7D527996C8E0027A34D /* SarkilarOut.swift in Sources */,
 				D4CBB7D327988F410027A34D /* SanatciCell.swift in Sources */,

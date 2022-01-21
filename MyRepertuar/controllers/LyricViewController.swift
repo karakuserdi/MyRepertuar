@@ -16,12 +16,7 @@ class LyricViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let soungId = soungId {
-            RepertuarServices.shared.getSoungLyric(id: soungId) { lyric in
-                DispatchQueue.main.async {
-                    self.soungLyricTextView.text = lyric
-                }
-            }
-        }
+        
     }
+    
 }
