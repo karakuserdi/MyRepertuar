@@ -28,14 +28,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1n0-HK-zNR">
-                                                    <rect key="frame" x="36" y="14.5" width="42" height="21"/>
+                                                    <rect key="frame" x="186" y="14.5" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="1n0-HK-zNR" firstAttribute="leading" secondItem="YxX-Ik-Nfm" secondAttribute="leadingMargin" constant="16" id="MeR-wI-5RH"/>
+                                                <constraint firstItem="1n0-HK-zNR" firstAttribute="centerX" secondItem="YxX-Ik-Nfm" secondAttribute="centerX" id="A78-pe-l1G"/>
                                                 <constraint firstItem="1n0-HK-zNR" firstAttribute="centerY" secondItem="YxX-Ik-Nfm" secondAttribute="centerY" id="fAD-by-BGF"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -58,19 +58,130 @@
                     <navigationItem key="navigationItem" title="Sanatçılar" id="BNx-3P-5Kq"/>
                     <connections>
                         <outlet property="tableView" destination="RaO-cC-xMT" id="uru-W7-78D"/>
+                        <segue destination="Fo6-ze-3pQ" kind="show" identifier="artistVC" id="96n-8o-ZCG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="71.651785714285708"/>
         </scene>
+        <!--Artist View Controller-->
+        <scene sceneID="dKj-Lf-UuJ">
+            <objects>
+                <viewController id="Fo6-ze-3pQ" customClass="ArtistViewController" customModule="MyRepertuar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zQ3-A0-LdJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="j58-UL-FD6">
+                                <rect key="frame" x="0.0" y="148" width="414" height="714"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="artistCell" id="zhs-jn-Z2i" customClass="ArtistCell" customModule="MyRepertuar" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zhs-jn-Z2i" id="gyt-mr-t3I">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Bz-KX-faS">
+                                                    <rect key="frame" x="186" y="14.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4Bz-KX-faS" firstAttribute="centerY" secondItem="gyt-mr-t3I" secondAttribute="centerY" id="PGP-OW-paP"/>
+                                                <constraint firstItem="4Bz-KX-faS" firstAttribute="centerX" secondItem="gyt-mr-t3I" secondAttribute="centerX" id="hcZ-Ho-JfC"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="artistNameLabel" destination="4Bz-KX-faS" id="cmg-jE-W6a"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fXL-ae-v2N"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="j58-UL-FD6" firstAttribute="top" secondItem="fXL-ae-v2N" secondAttribute="top" id="1nl-GL-j1n"/>
+                            <constraint firstItem="fXL-ae-v2N" firstAttribute="trailing" secondItem="j58-UL-FD6" secondAttribute="trailing" id="WIo-Th-CMo"/>
+                            <constraint firstItem="j58-UL-FD6" firstAttribute="leading" secondItem="fXL-ae-v2N" secondAttribute="leading" id="a23-Lb-kx1"/>
+                            <constraint firstItem="fXL-ae-v2N" firstAttribute="bottom" secondItem="j58-UL-FD6" secondAttribute="bottom" id="lH5-Oh-Zda"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="eAm-RM-Wd0"/>
+                    <connections>
+                        <outlet property="tableView" destination="j58-UL-FD6" id="nLk-QP-oiu"/>
+                        <segue destination="RVb-3A-clg" kind="presentation" identifier="lyricVC" id="Ak1-zh-dJX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ENY-UY-5fE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1900" y="72"/>
+        </scene>
+        <!--Lyric View Controller-->
+        <scene sceneID="cb2-Ih-Dbk">
+            <objects>
+                <viewController id="RVb-3A-clg" customClass="LyricViewController" customModule="MyRepertuar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gca-cZ-fgn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Şarkıcı ismi - şarkı adı" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbO-FO-Waf">
+                                <rect key="frame" x="16" y="28" width="382" height="18"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O5n-KH-jsl">
+                                <rect key="frame" x="157" y="0.0" width="100" height="8"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="L6A-IR-8dF"/>
+                                    <constraint firstAttribute="height" constant="8" id="Tyw-By-BT3"/>
+                                </constraints>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Şarkı Sözleri" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PXp-zk-m8c">
+                                <rect key="frame" x="16" y="96" width="382" height="696"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="uDd-iy-trF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fbO-FO-Waf" firstAttribute="top" secondItem="O5n-KH-jsl" secondAttribute="bottom" constant="20" id="MfS-61-MXT"/>
+                            <constraint firstItem="PXp-zk-m8c" firstAttribute="top" secondItem="fbO-FO-Waf" secondAttribute="bottom" constant="50" id="NaW-AI-bxB"/>
+                            <constraint firstItem="fbO-FO-Waf" firstAttribute="leading" secondItem="uDd-iy-trF" secondAttribute="leading" constant="16" id="Q8Z-he-KEp"/>
+                            <constraint firstItem="uDd-iy-trF" firstAttribute="bottom" secondItem="PXp-zk-m8c" secondAttribute="bottom" constant="16" id="QMt-2M-hNa"/>
+                            <constraint firstItem="uDd-iy-trF" firstAttribute="trailing" secondItem="fbO-FO-Waf" secondAttribute="trailing" constant="16" id="YGe-ow-QQq"/>
+                            <constraint firstItem="O5n-KH-jsl" firstAttribute="centerX" secondItem="gca-cZ-fgn" secondAttribute="centerX" id="ZAT-OW-fI7"/>
+                            <constraint firstItem="uDd-iy-trF" firstAttribute="trailing" secondItem="PXp-zk-m8c" secondAttribute="trailing" constant="16" id="aLr-ub-i07"/>
+                            <constraint firstItem="PXp-zk-m8c" firstAttribute="leading" secondItem="uDd-iy-trF" secondAttribute="leading" constant="16" id="ai9-gb-SqZ"/>
+                            <constraint firstItem="O5n-KH-jsl" firstAttribute="top" secondItem="uDd-iy-trF" secondAttribute="top" id="dRl-P5-YVi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="artistAndSoungNameLabel" destination="fbO-FO-Waf" id="Hjo-L5-Ga2"/>
+                        <outlet property="soungLyricTextView" destination="PXp-zk-m8c" id="WNp-oC-s8S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v4K-Qa-R02" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2724.6376811594205" y="71.651785714285708"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="hVh-a7-yIv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hMY-wJ-aQe" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oNv-o9-KqC">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="oNv-o9-KqC">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -84,8 +195,14 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -9,13 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    
     var isLoad = false
     var pageNumber:Int = 1
     var sanatciList = [SanatciList]()
-    var sanatciListMore = [SanatciList]()
     @IBOutlet weak var tableView: UITableView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +29,7 @@ class ViewController: UIViewController {
             return
         }
         isLoad = true
-        SarkiServices.shared.getSanatciList(page: pageNumber,search: "") { result in
+        RepertuarServices.shared.getSanatciList(page: pageNumber,search: "") { result in
             DispatchQueue.main.async {
                 for i in result{
                     self.sanatciList.append(i)
@@ -47,7 +44,6 @@ class ViewController: UIViewController {
     func loadMoreData(){
         fetchSanatciList()
     }
-    
 }
 
 extension ViewController:UITableViewDelegate,UITableViewDataSource{
@@ -71,4 +67,16 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sanatci = "sanatciId = \(sanatciList[indexPath.row].id)"
+        performSegue(withIdentifier: "artistVC", sender: sanatci)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "artistVC"{
+            let artistId = sender as? String
+            let destinationVC = segue.destination as! ArtistViewController
+            destinationVC.artistId = artistId
+        }
+    }
 }
