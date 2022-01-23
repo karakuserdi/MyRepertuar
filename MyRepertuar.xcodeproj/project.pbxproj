@@ -24,6 +24,7 @@
 		D4F12F91279C0FE900C15D0E /* SarkiSozuIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F12F90279C0FE900C15D0E /* SarkiSozuIn.swift */; };
 		D4F12F93279D5AF300C15D0E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F12F92279D5AF300C15D0E /* HomeViewController.swift */; };
 		D4F12F99279D5C2A00C15D0E /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F12F98279D5C2A00C15D0E /* HomeCell.swift */; };
+		D4F12F9C279D6C3800C15D0E /* HomeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F12F9B279D6C3800C15D0E /* HomeCollectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		D4F12F90279C0FE900C15D0E /* SarkiSozuIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SarkiSozuIn.swift; sourceTree = "<group>"; };
 		D4F12F92279D5AF300C15D0E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D4F12F98279D5C2A00C15D0E /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		D4F12F9B279D6C3800C15D0E /* HomeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			children = (
 				D4CBB7DC279972030027A34D /* ArtistCell.swift */,
 				D4F12F98279D5C2A00C15D0E /* HomeCell.swift */,
+				D4F12F9B279D6C3800C15D0E /* HomeCollectionCell.swift */,
 			);
 			path = "view-cell";
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				D4CBB7AA27975A090027A34D /* SceneDelegate.swift in Sources */,
 				D4F12F93279D5AF300C15D0E /* HomeViewController.swift in Sources */,
 				D4CBB7D1279812080027A34D /* SanatcilarIn.swift in Sources */,
+				D4F12F9C279D6C3800C15D0E /* HomeCollectionCell.swift in Sources */,
 				D4F12F99279D5C2A00C15D0E /* HomeCell.swift in Sources */,
 				D4CBB7D527996C8E0027A34D /* SarkilarOut.swift in Sources */,
 				D4CBB7D727996DB00027A34D /* SarkilarIn.swift in Sources */,

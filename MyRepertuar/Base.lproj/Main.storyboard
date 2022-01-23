@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="RaO-cC-xMT">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="138" width="414" height="724"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homeCell" id="9k2-dD-VIE" customClass="HomeCell" customModule="MyRepertuar" customModuleProvider="target">
@@ -28,35 +29,121 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1n0-HK-zNR">
-                                                    <rect key="frame" x="186" y="29.5" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="116" y="15" width="129.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HN4-iS-uaJ">
+                                                    <rect key="frame" x="36" y="15" width="50" height="50"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZJ-9m-NOi">
+                                                            <rect key="frame" x="16.5" y="9.5" width="17" height="31.5"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="B60-6D-ToG"/>
+                                                        <constraint firstItem="HZJ-9m-NOi" firstAttribute="centerX" secondItem="HN4-iS-uaJ" secondAttribute="centerX" id="hML-XL-BJ4"/>
+                                                        <constraint firstAttribute="height" constant="50" id="qev-az-568"/>
+                                                        <constraint firstItem="HZJ-9m-NOi" firstAttribute="centerY" secondItem="HN4-iS-uaJ" secondAttribute="centerY" id="tki-Ps-2Ci"/>
+                                                    </constraints>
+                                                </view>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="P55-FX-fXB">
+                                                    <rect key="frame" x="261.5" y="31" width="116.5" height="34"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toplam şarkı sayısı: 460" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ycl-uk-Gtt">
+                                                            <rect key="frame" x="0.0" y="0.0" width="116.5" height="12"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <color key="textColor" systemColor="systemGrayColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toplam albüm sayısı: 64" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDe-0N-jf1">
+                                                            <rect key="frame" x="0.0" y="22" width="116.5" height="12"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <color key="textColor" systemColor="systemGrayColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="1n0-HK-zNR" firstAttribute="centerX" secondItem="YxX-Ik-Nfm" secondAttribute="centerX" id="A78-pe-l1G"/>
-                                                <constraint firstItem="1n0-HK-zNR" firstAttribute="centerY" secondItem="YxX-Ik-Nfm" secondAttribute="centerY" id="fAD-by-BGF"/>
+                                                <constraint firstItem="HN4-iS-uaJ" firstAttribute="centerY" secondItem="YxX-Ik-Nfm" secondAttribute="centerY" id="3pu-dt-BeP"/>
+                                                <constraint firstItem="P55-FX-fXB" firstAttribute="bottom" secondItem="HN4-iS-uaJ" secondAttribute="bottom" id="BQs-R5-1lA"/>
+                                                <constraint firstItem="1n0-HK-zNR" firstAttribute="leading" secondItem="HN4-iS-uaJ" secondAttribute="trailing" constant="30" id="c9B-Ja-4JJ"/>
+                                                <constraint firstItem="HN4-iS-uaJ" firstAttribute="leading" secondItem="YxX-Ik-Nfm" secondAttribute="leadingMargin" constant="16" id="p4y-gX-0yR"/>
+                                                <constraint firstItem="P55-FX-fXB" firstAttribute="leading" secondItem="1n0-HK-zNR" secondAttribute="trailing" constant="16" id="rJ3-qP-htg"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="P55-FX-fXB" secondAttribute="trailing" constant="16" id="tiB-Zr-cFL"/>
+                                                <constraint firstItem="1n0-HK-zNR" firstAttribute="top" secondItem="HN4-iS-uaJ" secondAttribute="top" id="yAi-gG-aeX"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="artistNames" destination="1n0-HK-zNR" id="x45-si-qSs"/>
+                                            <outlet property="artistNameLabel" destination="1n0-HK-zNR" id="n2H-N9-PrH"/>
+                                            <outlet property="artistNameView" destination="HN4-iS-uaJ" id="dar-rH-Tt6"/>
+                                            <outlet property="firstLetterOfArtistLabel" destination="HZJ-9m-NOi" id="DwX-lt-Ivk"/>
+                                            <outlet property="totalNumberOfAlbumsLabel" destination="VDe-0N-jf1" id="WjL-pV-nQK"/>
+                                            <outlet property="totalNumberOfSongsLabel" destination="Ycl-uk-Gtt" id="YDd-Fp-LVr"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dhp-pZ-K9k">
+                                <rect key="frame" x="0.0" y="88" width="414" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="M34-aw-vkz"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wj3-rn-8X5">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="homeCollectionCell" id="koP-8b-lhX" customClass="HomeCollectionCell" customModule="MyRepertuar" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="S8B-0O-Nj1">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tümü" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WA8-ak-ZED">
+                                                    <rect key="frame" x="43.5" y="55" width="41" height="18"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="WA8-ak-ZED" firstAttribute="centerY" secondItem="S8B-0O-Nj1" secondAttribute="centerY" id="LCa-i4-3nd"/>
+                                                <constraint firstItem="WA8-ak-ZED" firstAttribute="centerX" secondItem="S8B-0O-Nj1" secondAttribute="centerX" id="OJm-Is-dto"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="letterLabel" destination="WA8-ak-ZED" id="cF9-c5-sY0"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RaO-cC-xMT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5f2-yQ-0ym"/>
+                            <constraint firstItem="dhp-pZ-K9k" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="HNm-KL-63y"/>
                             <constraint firstItem="RaO-cC-xMT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="SPQ-nF-owo"/>
                             <constraint firstItem="RaO-cC-xMT" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="WnN-5p-5FR"/>
-                            <constraint firstItem="RaO-cC-xMT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="dJJ-di-ALX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dhp-pZ-K9k" secondAttribute="trailing" id="ZiC-ot-bXX"/>
+                            <constraint firstItem="dhp-pZ-K9k" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bOr-kJ-qBv"/>
+                            <constraint firstItem="RaO-cC-xMT" firstAttribute="top" secondItem="dhp-pZ-K9k" secondAttribute="bottom" id="yp1-jw-WMm"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sanatçılar" id="BNx-3P-5Kq"/>
                     <connections>
+                        <outlet property="letterCollectionView" destination="dhp-pZ-K9k" id="nXm-FW-Mkp"/>
                         <outlet property="tableView" destination="RaO-cC-xMT" id="9le-N3-fJg"/>
                         <segue destination="Fo6-ze-3pQ" kind="show" identifier="artistVC" id="8s9-0o-HBH"/>
                     </connections>
@@ -205,6 +292,12 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
