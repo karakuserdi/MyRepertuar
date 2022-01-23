@@ -9,7 +9,7 @@ import UIKit
 
 class LyricViewController: UIViewController {
     
-    var soungId:Int?
+    var soung:(String,Int)?
 
     @IBOutlet weak var artistAndSoungNameLabel: UILabel!
     @IBOutlet weak var soungLyricTextView: UITextView!
@@ -17,6 +17,20 @@ class LyricViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        fetchLyric()
     }
+    
+    func fetchLyric(){
+        if let soung = soung {
+            artistAndSoungNameLabel.text = soung.0
+            RepertuarServices.shared.getSarkiSozu(id: soung.1) { lyric in
+                DispatchQueue.main.async {
+                    self.soungLyricTextView.text = lyric
+                }
+            }
+        }
+    }
+    
+    
     
 }

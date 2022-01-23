@@ -11,6 +11,11 @@ class ArtistViewController: UIViewController {
     
     var artistId:String?
     var soungList = [SarkiList]()
+    var isLoad = false
+    var pageNumber:Int = 1
+    var soung:(String,Int)?
+    var artistNameAndIdData:(String,String)?
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -18,16 +23,31 @@ class ArtistViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        if let artistId = artistId {
-            RepertuarServices.shared.getSarkiList(page: 1, search: "", preFilter: artistId) { list in
-                self.soungList = list
+        fetchArtists()
+    }
+    
+    //MARK: - Fetch artists
+    func fetchArtists(){
+        if let artistNameAndIdData = artistNameAndIdData {
+            navigationItem.title = artistNameAndIdData.0
+            if isLoad == true{
+                return
+            }
+            
+            isLoad = true
+            RepertuarServices.shared.getSarkiList(page: pageNumber, search: "", preFilter: artistNameAndIdData.1) { list in
+                for i in list{
+                    self.soungList.append(i)
+                }
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
+                    self.isLoad = false
                 }
             }
         }
-        
     }
+    
+    
 }
 
 extension ArtistViewController:UITableViewDelegate, UITableViewDataSource{
@@ -42,16 +62,25 @@ extension ArtistViewController:UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastData = soungList.count - 1
+        if !isLoad && indexPath.row == lastData{
+            pageNumber += 1
+            self.fetchArtists()
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let soungId = soungList[indexPath.row].id
-        performSegue(withIdentifier: "lyricVC", sender: soungId)
+        let soungRow = soungList[indexPath.row]
+        soung = ("\(soungRow.sanatciAdi) - \(soungRow.sarkiAdi)", soungRow.id)
+        performSegue(withIdentifier: "lyricVC", sender: soung)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "lyricVC"{
-            let soungId = sender as? Int
+            let artistNameAndSoung = sender as! (String,Int)
             let destinationVC = segue.destination as! LyricViewController
-            destinationVC.soungId = soungId
+            destinationVC.soung = artistNameAndSoung
         }
     }
 }

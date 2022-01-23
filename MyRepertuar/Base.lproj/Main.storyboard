@@ -11,7 +11,7 @@
         <!--Sanatçılar-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MyRepertuar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="MyRepertuar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,8 +57,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sanatçılar" id="BNx-3P-5Kq"/>
                     <connections>
-                        <outlet property="tableView" destination="RaO-cC-xMT" id="uru-W7-78D"/>
-                        <segue destination="Fo6-ze-3pQ" kind="show" identifier="artistVC" id="96n-8o-ZCG"/>
+                        <outlet property="tableView" destination="RaO-cC-xMT" id="9le-N3-fJg"/>
+                        <segue destination="Fo6-ze-3pQ" kind="show" identifier="artistVC" id="8s9-0o-HBH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -144,11 +144,11 @@
                                     <constraint firstAttribute="height" constant="8" id="Tyw-By-BT3"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Şarkı Sözleri" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PXp-zk-m8c">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Şarkı Sözleri" translatesAutoresizingMaskIntoConstraints="NO" id="PXp-zk-m8c">
                                 <rect key="frame" x="16" y="96" width="382" height="696"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -181,12 +181,12 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hMY-wJ-aQe" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="oNv-o9-KqC">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="KIz-3b-HKT"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="6eO-Vi-4eP"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9k0-AJ-6zC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -194,6 +194,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="71.651785714285708"/>
         </scene>
     </scenes>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

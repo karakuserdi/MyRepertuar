@@ -26,14 +26,15 @@ class RepertuarServices{
                 "direction":"desc"
             ]
         ]
-
-        AF.request(baseURL+"sanatci/getSanatciList",method: .post,parameters: params, encoding: JSONEncoding.default).responseDecodable(of:SanatcilarIn.self) { response in
+        
+        AF.request(baseURL+"sanatci/getSanatciList",method: .post, parameters: params, encoding: JSONEncoding.default).responseDecodable(of:SanatcilarIn.self) { response in
             
             var list = [SanatciList]()
-            
+   
             if let data = response.data{
                 do {
                     let veri = try JSONDecoder().decode(SanatcilarIn.self, from: data)
+                    
                     list = veri.sanatciList
                     
                     completion(list)
@@ -76,4 +77,25 @@ class RepertuarServices{
             }
         }
     }
+    
+    func getSarkiSozu(id:Int, completion:@escaping(String) -> Void){
+        AF.request(baseURL+"sarki/getSarkiForSarkiSozuModal",
+                   method: .post,
+                   parameters: id,
+                   encoder: JSONParameterEncoder.default).responseDecodable(of: SarkiSozuInResponse.self){ response in
+            
+            var lyric = ""
+            if let data = response.data{
+                do {
+                    let veri = try JSONDecoder().decode(SarkiSozuInResponse.self, from: data)
+                    lyric = veri.sarki.sozleri
+                    
+                    completion(lyric)
+                } catch {
+                    print(error)
+                }
+            }
+        }
+    }
 }
+

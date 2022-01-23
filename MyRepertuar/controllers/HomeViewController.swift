@@ -1,52 +1,51 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  MyRepertuar
 //
-//  Created by Riza Erdi Karakus on 18.01.2022.
+//  Created by Riza Erdi Karakus on 23.01.2022.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
-    
+class HomeViewController: UIViewController {
+
     var isLoad = false
     var pageNumber:Int = 1
     var sanatciList = [SanatciList]()
+    var artistNameAndId:(String,String)?
+
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        
         fetchSanatciList()
+
     }
     
     func fetchSanatciList(){
-        if isLoad == true{
+        if isLoad{
             return
         }
         isLoad = true
+        
         RepertuarServices.shared.getSanatciList(page: pageNumber,search: "") { result in
             DispatchQueue.main.async {
                 for i in result{
                     self.sanatciList.append(i)
+                    
                 }
-                
                 self.tableView.reloadData()
                 self.isLoad = false
             }
         }
     }
-    
-    func loadMoreData(){
-        fetchSanatciList()
-    }
 }
 
-extension ViewController:UITableViewDelegate,UITableViewDataSource{
+extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sanatciList.count
     }
@@ -54,6 +53,7 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "sanatciCell", for: indexPath) as! SanatciCell
         let sanatci = sanatciList[indexPath.row]
+        
         
         cell.sanatciAdLabel.text = sanatci.sanatciAdi
         return cell
@@ -63,20 +63,21 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
         let lastData = sanatciList.count - 1
         if !isLoad && indexPath.row == lastData{
             pageNumber += 1
-            self.loadMoreData()
+            self.fetchSanatciList()
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let sanatci = "sanatciId = \(sanatciList[indexPath.row].id)"
-        performSegue(withIdentifier: "artistVC", sender: sanatci)
+        let sanatci = sanatciList[indexPath.row]
+        artistNameAndId = ("\(sanatci.sanatciAdi)", "sanatciId = \(sanatci.id)")
+        performSegue(withIdentifier: "artistVC", sender: artistNameAndId)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "artistVC"{
-            let artistId = sender as? String
+            let artistNameAndIdData = sender as? (String,String)
             let destinationVC = segue.destination as! ArtistViewController
-            destinationVC.artistId = artistId
+            destinationVC.artistNameAndIdData = artistNameAndIdData
         }
     }
 }

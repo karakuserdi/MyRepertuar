@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D4CBB7A827975A090027A34D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CBB7A727975A090027A34D /* AppDelegate.swift */; };
 		D4CBB7AA27975A090027A34D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CBB7A927975A090027A34D /* SceneDelegate.swift */; };
-		D4CBB7AC27975A090027A34D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CBB7AB27975A090027A34D /* ViewController.swift */; };
 		D4CBB7AF27975A090027A34D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CBB7AD27975A090027A34D /* Main.storyboard */; };
 		D4CBB7B127975A0C0027A34D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4CBB7B027975A0C0027A34D /* Assets.xcassets */; };
 		D4CBB7B427975A0C0027A34D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CBB7B227975A0C0027A34D /* LaunchScreen.storyboard */; };
@@ -23,13 +22,14 @@
 		D4CBB7DA279971D40027A34D /* ArtistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CBB7D9279971D40027A34D /* ArtistViewController.swift */; };
 		D4CBB7DD279972030027A34D /* ArtistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CBB7DC279972030027A34D /* ArtistCell.swift */; };
 		D4CBB7DF27997D570027A34D /* LyricViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CBB7DE27997D570027A34D /* LyricViewController.swift */; };
+		D4F12F91279C0FE900C15D0E /* SarkiSozuIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F12F90279C0FE900C15D0E /* SarkiSozuIn.swift */; };
+		D4F12F93279D5AF300C15D0E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F12F92279D5AF300C15D0E /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D4CBB7A427975A090027A34D /* MyRepertuar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyRepertuar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4CBB7A727975A090027A34D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4CBB7A927975A090027A34D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D4CBB7AB27975A090027A34D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D4CBB7AE27975A090027A34D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D4CBB7B027975A0C0027A34D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4CBB7B327975A0C0027A34D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -43,6 +43,8 @@
 		D4CBB7D9279971D40027A34D /* ArtistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistViewController.swift; sourceTree = "<group>"; };
 		D4CBB7DC279972030027A34D /* ArtistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCell.swift; sourceTree = "<group>"; };
 		D4CBB7DE27997D570027A34D /* LyricViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricViewController.swift; sourceTree = "<group>"; };
+		D4F12F90279C0FE900C15D0E /* SarkiSozuIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SarkiSozuIn.swift; sourceTree = "<group>"; };
+		D4F12F92279D5AF300C15D0E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +83,6 @@
 				D4CBB7BB27975A140027A34D /* model */,
 				D4CBB7A727975A090027A34D /* AppDelegate.swift */,
 				D4CBB7A927975A090027A34D /* SceneDelegate.swift */,
-				D4CBB7AB27975A090027A34D /* ViewController.swift */,
 				D4CBB7AD27975A090027A34D /* Main.storyboard */,
 				D4CBB7B027975A0C0027A34D /* Assets.xcassets */,
 				D4CBB7B227975A0C0027A34D /* LaunchScreen.storyboard */,
@@ -98,6 +99,7 @@
 				D4CBB7D0279812080027A34D /* SanatcilarIn.swift */,
 				D4CBB7D427996C8E0027A34D /* SarkilarOut.swift */,
 				D4CBB7D627996DB00027A34D /* SarkilarIn.swift */,
+				D4F12F90279C0FE900C15D0E /* SarkiSozuIn.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -116,6 +118,7 @@
 				D4CBB7DB279971E30027A34D /* view-cell */,
 				D4CBB7D9279971D40027A34D /* ArtistViewController.swift */,
 				D4CBB7DE27997D570027A34D /* LyricViewController.swift */,
+				D4F12F92279D5AF300C15D0E /* HomeViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -207,14 +210,15 @@
 			files = (
 				D4CBB7DD279972030027A34D /* ArtistCell.swift in Sources */,
 				D4CBB7C227975D450027A34D /* SarkiServices.swift in Sources */,
-				D4CBB7AC27975A090027A34D /* ViewController.swift in Sources */,
 				D4CBB7A827975A090027A34D /* AppDelegate.swift in Sources */,
 				D4CBB7AA27975A090027A34D /* SceneDelegate.swift in Sources */,
+				D4F12F93279D5AF300C15D0E /* HomeViewController.swift in Sources */,
 				D4CBB7D1279812080027A34D /* SanatcilarIn.swift in Sources */,
 				D4CBB7D527996C8E0027A34D /* SarkilarOut.swift in Sources */,
 				D4CBB7D327988F410027A34D /* SanatciCell.swift in Sources */,
 				D4CBB7D727996DB00027A34D /* SarkilarIn.swift in Sources */,
 				D4CBB7CD27980F930027A34D /* SanatcilarOut.swift in Sources */,
+				D4F12F91279C0FE900C15D0E /* SarkiSozuIn.swift in Sources */,
 				D4CBB7DF27997D570027A34D /* LyricViewController.swift in Sources */,
 				D4CBB7DA279971D40027A34D /* ArtistViewController.swift in Sources */,
 			);
