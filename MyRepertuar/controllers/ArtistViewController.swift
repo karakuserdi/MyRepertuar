@@ -29,7 +29,6 @@ class ArtistViewController: UIViewController {
     //MARK: - Fetch artists
     func fetchArtists(){
         if let artistNameAndIdData = artistNameAndIdData {
-            navigationItem.title = artistNameAndIdData.0
             if isLoad == true{
                 return
             }
@@ -39,7 +38,9 @@ class ArtistViewController: UIViewController {
                 for i in list{
                     self.soungList.append(i)
                 }
+                
                 DispatchQueue.main.async {
+                    self.navigationItem.title = artistNameAndIdData.0
                     self.tableView.reloadData()
                     self.isLoad = false
                 }
@@ -74,6 +75,7 @@ extension ArtistViewController:UITableViewDelegate, UITableViewDataSource{
         let soungRow = soungList[indexPath.row]
         soung = ("\(soungRow.sanatciAdi) - \(soungRow.sarkiAdi)", soungRow.id)
         performSegue(withIdentifier: "lyricVC", sender: soung)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

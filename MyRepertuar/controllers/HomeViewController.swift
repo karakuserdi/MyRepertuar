@@ -51,11 +51,11 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "sanatciCell", for: indexPath) as! SanatciCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as! HomeCell
         let sanatci = sanatciList[indexPath.row]
         
         
-        cell.sanatciAdLabel.text = sanatci.sanatciAdi
+        cell.artistNames.text = sanatci.sanatciAdi
         return cell
     }
     
@@ -71,6 +71,7 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
         let sanatci = sanatciList[indexPath.row]
         artistNameAndId = ("\(sanatci.sanatciAdi)", "sanatciId = \(sanatci.id)")
         performSegue(withIdentifier: "artistVC", sender: artistNameAndId)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

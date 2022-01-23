@@ -1,15 +1,16 @@
 //
-//  SanatciCell.swift
+//  HomeCell.swift
 //  MyRepertuar
 //
-//  Created by Riza Erdi Karakus on 19.01.2022.
+//  Created by Riza Erdi Karakus on 23.01.2022.
 //
 
 import UIKit
 
-class SanatciCell: UITableViewCell {
+class HomeCell: UITableViewCell {
     
-    @IBOutlet weak var sanatciAdLabel: UILabel!
+    
+    @IBOutlet weak var artistNames: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

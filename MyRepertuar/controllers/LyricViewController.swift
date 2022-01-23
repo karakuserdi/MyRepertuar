@@ -13,12 +13,21 @@ class LyricViewController: UIViewController {
 
     @IBOutlet weak var artistAndSoungNameLabel: UILabel!
     @IBOutlet weak var soungLyricTextView: UITextView!
+    @IBOutlet weak var closeLineView: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configureUI()
         fetchLyric()
     }
+    
+    //MARK: - Configure UI
+    func configureUI(){
+        closeLineView.layer.cornerRadius = 4
+        
+    }
+    
     
     func fetchLyric(){
         if let soung = soung {
