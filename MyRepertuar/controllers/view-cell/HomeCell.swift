@@ -9,6 +9,14 @@ import UIKit
 
 class HomeCell: UITableViewCell {
     
+    var homeViewModel:HomeViewModel!{
+        didSet{
+            totalNumberOfAlbumsLabel.text = "Toplam albüm sayısı: \(homeViewModel.albumCount)"
+            totalNumberOfSongsLabel.text = "Toplam şarkı sayısı: \(homeViewModel.sarkiCount)"
+            artistNameLabel.text = homeViewModel.sanatciAdi
+        }
+    }
+    
     
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var artistNameView: UIView!

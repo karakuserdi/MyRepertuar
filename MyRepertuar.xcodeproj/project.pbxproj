@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D424358D27A00D5E00930CFA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D424358C27A00D5E00930CFA /* HomeViewModel.swift */; };
+		D424358F27A08E0800930CFA /* HomeServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D424358E27A08E0800930CFA /* HomeServices.swift */; };
 		D4CBB7A827975A090027A34D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CBB7A727975A090027A34D /* AppDelegate.swift */; };
 		D4CBB7AA27975A090027A34D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CBB7A927975A090027A34D /* SceneDelegate.swift */; };
 		D4CBB7AF27975A090027A34D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CBB7AD27975A090027A34D /* Main.storyboard */; };
@@ -18,16 +20,18 @@
 		D4CBB7D1279812080027A34D /* SanatcilarIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CBB7D0279812080027A34D /* SanatcilarIn.swift */; };
 		D4CBB7D527996C8E0027A34D /* SarkilarOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CBB7D427996C8E0027A34D /* SarkilarOut.swift */; };
 		D4CBB7D727996DB00027A34D /* SarkilarIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CBB7D627996DB00027A34D /* SarkilarIn.swift */; };
-		D4CBB7DA279971D40027A34D /* ArtistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CBB7D9279971D40027A34D /* ArtistViewController.swift */; };
+		D4CBB7DA279971D40027A34D /* SoungsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CBB7D9279971D40027A34D /* SoungsViewController.swift */; };
 		D4CBB7DD279972030027A34D /* ArtistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CBB7DC279972030027A34D /* ArtistCell.swift */; };
 		D4CBB7DF27997D570027A34D /* LyricViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CBB7DE27997D570027A34D /* LyricViewController.swift */; };
 		D4F12F91279C0FE900C15D0E /* SarkiSozuIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F12F90279C0FE900C15D0E /* SarkiSozuIn.swift */; };
-		D4F12F93279D5AF300C15D0E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F12F92279D5AF300C15D0E /* HomeViewController.swift */; };
+		D4F12F93279D5AF300C15D0E /* ArtistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F12F92279D5AF300C15D0E /* ArtistViewController.swift */; };
 		D4F12F99279D5C2A00C15D0E /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F12F98279D5C2A00C15D0E /* HomeCell.swift */; };
 		D4F12F9C279D6C3800C15D0E /* HomeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F12F9B279D6C3800C15D0E /* HomeCollectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D424358C27A00D5E00930CFA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		D424358E27A08E0800930CFA /* HomeServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServices.swift; sourceTree = "<group>"; };
 		D4CBB7A427975A090027A34D /* MyRepertuar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyRepertuar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4CBB7A727975A090027A34D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4CBB7A927975A090027A34D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,11 +44,11 @@
 		D4CBB7D0279812080027A34D /* SanatcilarIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanatcilarIn.swift; sourceTree = "<group>"; };
 		D4CBB7D427996C8E0027A34D /* SarkilarOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SarkilarOut.swift; sourceTree = "<group>"; };
 		D4CBB7D627996DB00027A34D /* SarkilarIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SarkilarIn.swift; sourceTree = "<group>"; };
-		D4CBB7D9279971D40027A34D /* ArtistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistViewController.swift; sourceTree = "<group>"; };
+		D4CBB7D9279971D40027A34D /* SoungsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoungsViewController.swift; sourceTree = "<group>"; };
 		D4CBB7DC279972030027A34D /* ArtistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCell.swift; sourceTree = "<group>"; };
 		D4CBB7DE27997D570027A34D /* LyricViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricViewController.swift; sourceTree = "<group>"; };
 		D4F12F90279C0FE900C15D0E /* SarkiSozuIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SarkiSozuIn.swift; sourceTree = "<group>"; };
-		D4F12F92279D5AF300C15D0E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D4F12F92279D5AF300C15D0E /* ArtistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistViewController.swift; sourceTree = "<group>"; };
 		D4F12F98279D5C2A00C15D0E /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		D4F12F9B279D6C3800C15D0E /* HomeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,10 +84,10 @@
 		D4CBB7A627975A090027A34D /* MyRepertuar */ = {
 			isa = PBXGroup;
 			children = (
+				D4CBB7BB27975A140027A34D /* model */,
 				D4F12F9A279D5E2100C15D0E /* viewModel */,
 				D4CBB7D8279971A50027A34D /* controllers */,
 				D4CBB7C027975CFC0027A34D /* api */,
-				D4CBB7BB27975A140027A34D /* model */,
 				D4CBB7A727975A090027A34D /* AppDelegate.swift */,
 				D4CBB7A927975A090027A34D /* SceneDelegate.swift */,
 				D4CBB7AD27975A090027A34D /* Main.storyboard */,
@@ -110,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				D4CBB7C127975D450027A34D /* SarkiServices.swift */,
+				D424358E27A08E0800930CFA /* HomeServices.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -118,8 +123,8 @@
 			isa = PBXGroup;
 			children = (
 				D4CBB7DB279971E30027A34D /* view-cell */,
-				D4F12F92279D5AF300C15D0E /* HomeViewController.swift */,
-				D4CBB7D9279971D40027A34D /* ArtistViewController.swift */,
+				D4F12F92279D5AF300C15D0E /* ArtistViewController.swift */,
+				D4CBB7D9279971D40027A34D /* SoungsViewController.swift */,
 				D4CBB7DE27997D570027A34D /* LyricViewController.swift */,
 			);
 			path = controllers;
@@ -138,6 +143,7 @@
 		D4F12F9A279D5E2100C15D0E /* viewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D424358C27A00D5E00930CFA /* HomeViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -223,16 +229,18 @@
 				D4CBB7C227975D450027A34D /* SarkiServices.swift in Sources */,
 				D4CBB7A827975A090027A34D /* AppDelegate.swift in Sources */,
 				D4CBB7AA27975A090027A34D /* SceneDelegate.swift in Sources */,
-				D4F12F93279D5AF300C15D0E /* HomeViewController.swift in Sources */,
+				D4F12F93279D5AF300C15D0E /* ArtistViewController.swift in Sources */,
 				D4CBB7D1279812080027A34D /* SanatcilarIn.swift in Sources */,
 				D4F12F9C279D6C3800C15D0E /* HomeCollectionCell.swift in Sources */,
 				D4F12F99279D5C2A00C15D0E /* HomeCell.swift in Sources */,
 				D4CBB7D527996C8E0027A34D /* SarkilarOut.swift in Sources */,
 				D4CBB7D727996DB00027A34D /* SarkilarIn.swift in Sources */,
+				D424358F27A08E0800930CFA /* HomeServices.swift in Sources */,
 				D4CBB7CD27980F930027A34D /* SanatcilarOut.swift in Sources */,
 				D4F12F91279C0FE900C15D0E /* SarkiSozuIn.swift in Sources */,
 				D4CBB7DF27997D570027A34D /* LyricViewController.swift in Sources */,
-				D4CBB7DA279971D40027A34D /* ArtistViewController.swift in Sources */,
+				D424358D27A00D5E00930CFA /* HomeViewModel.swift in Sources */,
+				D4CBB7DA279971D40027A34D /* SoungsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

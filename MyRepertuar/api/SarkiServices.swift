@@ -9,38 +9,41 @@ import Foundation
 import Alamofire
 
 class RepertuarServices{
-    let baseURL = "https://www.myrepertuar.com/api/json/"
     static let shared = RepertuarServices()
+    let baseURL = "https://www.myrepertuar.com/api/json/"
     
-    func getSanatciList(page:Int,search:String, completion: @escaping([SanatciList]) -> Void){
-        let params :[String:Any] = [
+    func getSanatciList(model: SanatcilarOut, completion: @escaping([SanatciList]) -> Void){
+        
+        let params : Parameters = [
             "filterObj":[
-            "preFilter":"",
-            "sanatciAdi":search,
-            "sanatciAdiSearchType":"startsWith"
+                "preFilter":model.filterObj.preFilter,
+                "sanatciAdi":model.filterObj.sanatciAdi,
+                "sanatciAdiSearchType":model.filterObj.sanatciAdiSearchType
             ],
-            "itemsPerPage":50,
-            "pageNum":page,
+            "itemsPerPage":model.itemsPerPage,
+            "pageNum":model.pageNum,
             "sortBy":[
-                "column":"numOfClicks",
-                "direction":"desc"
+                "column":model.sortBy.column,
+                "direction":model.sortBy.direction
             ]
         ]
         
-        AF.request(baseURL+"sanatci/getSanatciList",method: .post, parameters: params, encoding: JSONEncoding.default).responseDecodable(of:SanatcilarIn.self) { response in
+        AF.request(baseURL+"sanatci/getSanatciList",method: .post, parameters: params, encoding: JSONEncoding.default).responseData { response in
             
             var list = [SanatciList]()
-   
+            
             if let data = response.data{
                 do {
                     let veri = try JSONDecoder().decode(SanatcilarIn.self, from: data)
-                    
                     list = veri.sanatciList
-                    
                     completion(list)
                 } catch {
-                    print(error)
+                    list.removeAll()
+                    completion(list)
+                    print(error.localizedDescription)
                 }
+            }else{
+                completion(list)
             }
         }
     }
@@ -98,4 +101,3 @@ class RepertuarServices{
         }
     }
 }
-
