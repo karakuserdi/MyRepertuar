@@ -94,7 +94,7 @@ extension ArtistViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as! HomeCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as! ArtistCell
         if sanatciList.count == 0{
             return cell
         }

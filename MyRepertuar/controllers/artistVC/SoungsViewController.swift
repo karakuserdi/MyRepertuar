@@ -57,7 +57,7 @@ extension SoungsViewController:UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "artistCell", for: indexPath) as! ArtistCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "artistCell", for: indexPath) as! SoungCell
         let soung = soungList[indexPath.row]
         cell.artistNameLabel.text = soung.sarkiAdi
         return cell

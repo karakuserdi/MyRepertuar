@@ -1,17 +1,16 @@
 //
-//  ArtistCell.swift
+//  HomeCell.swift
 //  MyRepertuar
 //
-//  Created by Riza Erdi Karakus on 20.01.2022.
+//  Created by Riza Erdi Karakus on 25.01.2022.
 //
 
 import UIKit
 
-class ArtistCell: UITableViewCell {
+class HomeCell: UITableViewCell {
     
     @IBOutlet weak var artistNameLabel: UILabel!
     
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

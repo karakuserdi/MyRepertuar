@@ -33,6 +33,7 @@ class RepertuarServices{
             var list = [SanatciList]()
             
             if let data = response.data{
+    
                 do {
                     let veri = try JSONDecoder().decode(SanatcilarIn.self, from: data)
                     list = veri.sanatciList
