@@ -12,7 +12,7 @@ class HomeServices{
     static let shared = HomeServices()
     let baseURL = "https://www.myrepertuar.com/api/json/"
     
-    func getHomeDatas(sanatci:[Int], sarki:[Int], completion: @escaping([SanatciData]) -> Void){
+    func getHomeDatas(sanatci:[Int], sarki:[Int], completion: @escaping([SanatciData],[SanatciData],[LastSarkiData]) -> Void){
         let params: Parameters = ["requests":["mostPopularSanatcis",
                                               "mostPopularSarkis",
                                               "lastVisitedSanatcis",
@@ -22,19 +22,19 @@ class HomeServices{
         ]
         
         AF.request(baseURL+"home/getHomePageData", method: .post, parameters: params, encoding: JSONEncoding.default).responseData{ response in
-            
+
             if let data = response.data{
                 //let utf8Text = String(data: data, encoding: .utf8)
                 //print(utf8Text)
                 
                 do {
                     let veri = try JSONDecoder().decode(HomeModelIn.self, from: data)
-                    //print(veri.mostPopularSanatcis)
-                    //print(veri.mostPopularSarkis.data) // veri bazen geliyor bazen gelmiyor
-                    //print(veri.lastVisitedSanatcis)
-                    //print(veri.lastVisitedSarkis)
+                    //print(veri.mostPopularSanatcis) ***
+                    //print(veri.mostPopularSarkis) // veri bazen geliyor bazen gelmiyor
+                    //print(veri.lastVisitedSanatcis) ***
+                    //print(veri.lastVisitedSarkis) ***
                     
-                    completion(veri.lastVisitedSanatcis.data)
+                    completion(veri.lastVisitedSanatcis.data,veri.mostPopularSanatcis.data,veri.lastVisitedSarkis.data)
                 } catch {
                     print(error)
                 }
