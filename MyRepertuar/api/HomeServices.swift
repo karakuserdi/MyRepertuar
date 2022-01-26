@@ -21,7 +21,14 @@ class HomeServices{
                                   "lastVisitedSarkis":sarki
         ]
         
+        var mpSanatci  = [SanatciData]()
+        //var mpSarki  = [SanatciData]()
+        var lvSanatci  = [SanatciData]()
+        var lvSarki  = [LastSarkiData]()
+        
         AF.request(baseURL+"home/getHomePageData", method: .post, parameters: params, encoding: JSONEncoding.default).responseData{ response in
+            
+            
 
             if let data = response.data{
                 //let utf8Text = String(data: data, encoding: .utf8)
@@ -34,8 +41,14 @@ class HomeServices{
                     //print(veri.lastVisitedSanatcis) ***
                     //print(veri.lastVisitedSarkis) ***
                     
-                    completion(veri.lastVisitedSanatcis.data,veri.mostPopularSanatcis.data,veri.lastVisitedSarkis.data)
+                    mpSanatci  = veri.mostPopularSanatcis.data
+                    //mpSarki  = veri.mostPopularSanatcis.data
+                    lvSanatci  = veri.lastVisitedSanatcis.data
+                    lvSarki  = veri.lastVisitedSarkis.data
+                    
+                    completion(lvSanatci,mpSanatci,lvSarki)
                 } catch {
+                    completion(lvSanatci,mpSanatci,lvSarki)
                     print(error)
                 }
             }
