@@ -42,7 +42,7 @@ struct LastVisitedSanatcis:Codable{
 
 //MostPopularSarkis
 struct MostPopularSarkis:Codable{
-    let data:[SarkiData]
+    //let data:[SarkiData]
     let maxPopularity:Int
 }
 

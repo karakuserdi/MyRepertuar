@@ -12,7 +12,7 @@ class HomeServices{
     static let shared = HomeServices()
     let baseURL = "https://www.myrepertuar.com/api/json/"
     
-    func getHomeDatas(sanatci:[Int], sarki:[Int], completion: @escaping(String) -> Void){
+    func getHomeDatas(sanatci:[Int], sarki:[Int], completion: @escaping([SanatciData]) -> Void){
         let params: Parameters = ["requests":["mostPopularSanatcis",
                                               "mostPopularSarkis",
                                               "lastVisitedSanatcis",
@@ -29,7 +29,12 @@ class HomeServices{
                 
                 do {
                     let veri = try JSONDecoder().decode(HomeModelIn.self, from: data)
-                    print(veri)
+                    //print(veri.mostPopularSanatcis)
+                    //print(veri.mostPopularSarkis.data) // veri bazen geliyor bazen gelmiyor
+                    //print(veri.lastVisitedSanatcis)
+                    //print(veri.lastVisitedSarkis)
+                    
+                    completion(veri.lastVisitedSanatcis.data)
                 } catch {
                     print(error)
                 }

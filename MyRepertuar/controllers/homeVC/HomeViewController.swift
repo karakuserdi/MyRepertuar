@@ -9,9 +9,10 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-    var lastViewArtists = UserDefaults.standard.array(forKey: "artistIDs") as? [Int] ?? []
     
+    @IBOutlet weak var tableView: UITableView!
+    var lastViewArtists = [Int]()
+    var datam = [SanatciData]()
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -19,26 +20,43 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        datam.removeAll()
+        lastViewArtists = UserDefaults.standard.array(forKey: "artistIDs") as? [Int] ?? []
         getHomeData()
     }
     
     
     func getHomeData(){
         HomeServices.shared.getHomeDatas(sanatci: lastViewArtists, sarki: [109600,126015,268805,30480]){list in
-            
+            DispatchQueue.main.async {
+                for lastViewArtist in self.lastViewArtists.reversed() {
+                    for list in list {
+                        if list.id == lastViewArtist{
+                            self.datam.append(list)
+                        }
+                    }
+                }
+                self.tableView.reloadData()
+            }
         }
     }
+    
+    
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return datam.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as! HomeCell
-        
-        cell.artistNameLabel.text = "Deneme"
+        let data = datam[indexPath.row].sanatciAdi
+        cell.artistNameLabel.text = data
         
         return cell
     }
