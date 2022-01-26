@@ -43,7 +43,7 @@ class ArtistViewController: UIViewController, UITextFieldDelegate{
             searchQuery = ""
         }
         
-        RepertuarServices.shared.getSanatciList(model: SanatcilarOut(filterObj: FilterObj(preFilter: "", sanatciAdi: searchQuery, sanatciAdiSearchType: "startsWith"), itemsPerPage: 50, pageNum: pageNumber, sortBy: SortBy(column: "numOfClicks", direction: "desc"))) { result in
+        RepertuarServices.shared.getSanatciList(model: SanatcilarOut(filterObj: FilterObj(preFilter: "", sanatciAdi: searchQuery, sanatciAdiSearchType: "startsWith"), itemsPerPage: 10, pageNum: pageNumber, sortBy: SortBy(column: "numOfClicks", direction: "desc"))) { result in
             DispatchQueue.main.async {
                 for i in result{
                     self.sanatciList.append(i)
@@ -116,7 +116,7 @@ extension ArtistViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let lastData = sanatciList.count - 5
+        let lastData = sanatciList.count - 3
         if !isLoad && indexPath.row == lastData{
             pageNumber += 1
             self.fetchSanatciList()

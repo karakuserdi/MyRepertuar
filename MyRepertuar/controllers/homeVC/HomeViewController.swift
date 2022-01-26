@@ -33,7 +33,6 @@ class HomeViewController: UIViewController {
         getHomeData()
     }
     
-    
     //Collection views UI
     func collectionViewsUI(){
         lvSoungCollectionView.collectionViewLayout = collectionViewLayoutFunc(lvSoungCollectionView)
