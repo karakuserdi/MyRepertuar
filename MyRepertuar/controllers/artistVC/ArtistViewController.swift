@@ -11,8 +11,19 @@ class ArtistViewController: UIViewController, UITextFieldDelegate{
 
     var isLoad = false
     var pageNumber:Int = 1
-    var sanatciList = [SanatciList]()
     var artistNameAndId:(String,String)?
+    var sanatciList = [SanatciList]()
+    
+//    init(sanatciList: [SanatciList]) {
+//        self.sanatciList = sanatciList
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        super.init(coder: coder)
+//    }
+//
+    
     
     //Save artist ids to user defaults
     var lastViewArtists = UserDefaults.standard.array(forKey: "artistIDs") as? [Int] ?? []
@@ -29,8 +40,6 @@ class ArtistViewController: UIViewController, UITextFieldDelegate{
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
-        
-        fetchSanatciList()
     }
     
     func fetchSanatciList(){

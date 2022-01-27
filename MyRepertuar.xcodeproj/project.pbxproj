@@ -32,6 +32,7 @@
 		D4F12F91279C0FE900C15D0E /* SarkiSozuIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F12F90279C0FE900C15D0E /* SarkiSozuIn.swift */; };
 		D4F12F93279D5AF300C15D0E /* ArtistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F12F92279D5AF300C15D0E /* ArtistViewController.swift */; };
 		D4F12F99279D5C2A00C15D0E /* ArtistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F12F98279D5C2A00C15D0E /* ArtistCell.swift */; };
+		D4F706CF27A2EA97001D3A05 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F706CE27A2EA97001D3A05 /* MainTabController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		D4F12F90279C0FE900C15D0E /* SarkiSozuIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SarkiSozuIn.swift; sourceTree = "<group>"; };
 		D4F12F92279D5AF300C15D0E /* ArtistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistViewController.swift; sourceTree = "<group>"; };
 		D4F12F98279D5C2A00C15D0E /* ArtistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCell.swift; sourceTree = "<group>"; };
+		D4F706CE27A2EA97001D3A05 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 			children = (
 				D424359027A08FE000930CFA /* homeVC */,
 				D424359627A090A900930CFA /* artistVC */,
+				D4F706CE27A2EA97001D3A05 /* MainTabController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				D4CBB7A827975A090027A34D /* AppDelegate.swift in Sources */,
 				D424359327A0901D00930CFA /* HomeViewController.swift in Sources */,
 				D416E53527A16744008FA9CE /* LvSoungCell.swift in Sources */,
+				D4F706CF27A2EA97001D3A05 /* MainTabController.swift in Sources */,
 				D4CBB7AA27975A090027A34D /* SceneDelegate.swift in Sources */,
 				D416E53127A16725008FA9CE /* MpSoungCell.swift in Sources */,
 				D4F12F93279D5AF300C15D0E /* ArtistViewController.swift in Sources */,

@@ -127,7 +127,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMH-jA-fu5">
-                                <rect key="frame" x="0.0" y="148" width="414" height="665"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ihp-he-Qkd">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
@@ -524,7 +524,7 @@
                     <tabBarItem key="tabBarItem" title="Satançılar" image="music.mic" catalog="system" id="ZC7-ig-spb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="oNv-o9-KqC">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -568,10 +568,10 @@
             </objects>
             <point key="canvasLocation" x="2031.8840579710147" y="765.40178571428567"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Controller-->
         <scene sceneID="iIq-St-gdf">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="lyG-tN-IX7" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="lyG-tN-IX7" customClass="MainTabController" customModule="MyRepertuar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="To0-OX-fFZ">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -597,7 +597,7 @@
                     <tabBarItem key="tabBarItem" title="Anasayfa" image="house" catalog="system" id="uqt-AT-onr"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="NnZ-gF-Svd">
-                        <rect key="frame" x="0.0" y="44" width="414" height="104"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
