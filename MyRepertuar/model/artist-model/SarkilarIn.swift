@@ -24,7 +24,7 @@ struct SarkiList:Codable{
     let sanatciId:Int
     let sanatciAdi:String
     let numOfClicks:Int
-    let saNumOfClicks:Int
+    let saNumOfClicks:Int?
     let albumAdi:String?
     let inputDate:String
     let numOfAddedRepts:Int

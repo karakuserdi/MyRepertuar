@@ -10,8 +10,8 @@ import Foundation
 struct HomeModelIn:Codable{
     let mostPopularSanatcis:MostPopularSanatcis
     let mostPopularSarkis:MostPopularSarkis
-    let lastVisitedSanatcis:LastVisitedSanatcis
-    let lastVisitedSarkis:LastVisitedSarkis
+    let lastVisitedSanatcis:LastVisitedSanatcis?
+    let lastVisitedSarkis:LastVisitedSarkis?
     let timePassed:Float
 }
 
@@ -22,7 +22,7 @@ struct LastVisitedSarkis:Codable{
 }
 
 struct LastSarkiData:Codable{
-    let albumAdi:String
+    let albumAdi:String?
     let id:Int
     let link:String
     let numOfAddedRepts:String
@@ -42,14 +42,14 @@ struct LastVisitedSanatcis:Codable{
 
 //MostPopularSarkis
 struct MostPopularSarkis:Codable{
-    //let data:[SarkiData]
+    let data:[SarkiData]
     let maxPopularity:Int
 }
 
 struct SarkiData:Codable{
     let id:Int
     let sarkiAdi:String
-    let albumAdi:String
+    let albumAdi:String?
     let sanatciAdi:String
     let sanatciId:Int
     let numOfClicks:Int

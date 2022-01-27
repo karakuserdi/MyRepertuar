@@ -21,8 +21,8 @@ struct Counts:Codable{
 struct SanatciList:Codable{
     let id:Int
     let sanatciAdi:String
-    let saId:String
-    let saNumOfClicks:String
+    let saId:String?
+    let saNumOfClicks:String?
     let numOfClicks:Int
     let approvedByOwner:Bool
     let approvedByAdmin:Bool

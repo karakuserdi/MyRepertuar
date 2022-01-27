@@ -14,17 +14,6 @@ class ArtistViewController: UIViewController, UITextFieldDelegate{
     var artistNameAndId:(String,String)?
     var sanatciList = [SanatciList]()
     
-//    init(sanatciList: [SanatciList]) {
-//        self.sanatciList = sanatciList
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-//    }
-//
-    
-    
     //Save artist ids to user defaults
     var lastViewArtists = UserDefaults.standard.array(forKey: "artistIDs") as? [Int] ?? []
     
@@ -52,7 +41,7 @@ class ArtistViewController: UIViewController, UITextFieldDelegate{
             searchQuery = ""
         }
         
-        RepertuarServices.shared.getSanatciList(model: SanatcilarOut(filterObj: FilterObj(preFilter: "", sanatciAdi: searchQuery, sanatciAdiSearchType: "startsWith"), itemsPerPage: 10, pageNum: pageNumber, sortBy: SortBy(column: "numOfClicks", direction: "desc"))) { result in
+        RepertuarServices.shared.getSanatciList(model: SanatcilarOut(filterObj: FilterObj(preFilter: "", sanatciAdi: searchQuery, sanatciAdiSearchType: "startsWith"), itemsPerPage: 50, pageNum: pageNumber, sortBy: SortBy(column: "numOfClicks", direction: "desc"))) { result in
             DispatchQueue.main.async {
                 for i in result{
                     self.sanatciList.append(i)
@@ -86,6 +75,7 @@ extension ArtistViewController: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty{
             searchQuery = ""
+            pageNumber = 1
             sanatciList.removeAll()
             fetchSanatciList()
         }
@@ -101,6 +91,7 @@ extension ArtistViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sanatciList.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as! ArtistCell

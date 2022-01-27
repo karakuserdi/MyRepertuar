@@ -11,15 +11,19 @@ class HomeViewController: UIViewController {
 
     var lastViewArtists = [Int]()
     
+    var artistNameAndId:(String,String)?
+    
     var lvSanatciData = [SanatciData]()
     var lvSarkiData = [LastSarkiData]()
     var mpSanatciData = [SanatciData]()
+    var mpSarkiData = [SarkiData]()
+    
+    var overlay : UIView?
     
     @IBOutlet weak var mpArtistCollectionView: UICollectionView!
     @IBOutlet weak var mpSoungCollectionView: UICollectionView!
     @IBOutlet weak var lvArtistCollectionView: UICollectionView!
     @IBOutlet weak var lvSoungCollectionView: UICollectionView!
-    
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -28,9 +32,26 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        ovarlayView()
         lvSanatciData.removeAll()
         lastViewArtists = UserDefaults.standard.array(forKey: "artistIDs") as? [Int] ?? []
         getHomeData()
+    }
+    
+    func ovarlayView(){
+        overlay = UIView(frame: view.frame)
+        let loadingIndicator = UIActivityIndicatorView()
+        
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.color = .black
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        loadingIndicator.center = overlay!.center
+        overlay?.addSubview(loadingIndicator)
+        
+        overlay?.backgroundColor = UIColor.white
+        overlay?.alpha = 1
+        view.addSubview(overlay!)
     }
     
     //Collection views UI
@@ -43,10 +64,11 @@ class HomeViewController: UIViewController {
     }
     
     func getHomeData(){
-        HomeServices.shared.getHomeDatas(sanatci: lastViewArtists, sarki: [109600]){ lvSanatci,mpSanatci,lvSarki in
+        HomeServices.shared.getHomeDatas(sanatci: lastViewArtists, sarki: []){ lvSanatci,mpSarki,mpSanatci,lvSarki  in
             DispatchQueue.main.async {
                 //Load most popular sanatci
                 self.mpSanatciData = mpSanatci
+                self.mpSarkiData = mpSarki
                 
                 //load most popular sanatci
                 self.lvSarkiData = lvSarki
@@ -65,6 +87,9 @@ class HomeViewController: UIViewController {
                 self.mpSoungCollectionView.reloadData()
                 self.lvArtistCollectionView.reloadData()
                 self.lvSoungCollectionView.reloadData()
+                
+                self.overlay?.removeFromSuperview()
+                //self.alert.dismiss(animated: true, completion: nil)
             }
         }
     }
@@ -78,7 +103,7 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
         if collectionView == self.mpArtistCollectionView{
             return mpSanatciData.count
         }else if collectionView == self.mpSoungCollectionView{
-            return mpSanatciData.count
+            return mpSarkiData.count
         }else if collectionView == self.lvArtistCollectionView{
             return lvSanatciData.count
         }else if collectionView == self.lvSoungCollectionView{
@@ -94,20 +119,42 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
             cell.artistNameLabel.text = mpSanatciData[indexPath.row].sanatciAdi
             return cell
         }else if collectionView == self.mpSoungCollectionView{
-            let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "mpSoungCell", for: indexPath) as! MpSoungCell
-            cell2.soungNameLabel.text = mpSanatciData[indexPath.row].sanatciAdi
-            return cell2
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mpSoungCell", for: indexPath) as! MpSoungCell
+            cell.soungNameLabel.text = mpSarkiData[indexPath.row].sarkiAdi
+            return cell
         }else if collectionView == self.lvArtistCollectionView{
-            let cell3 = collectionView.dequeueReusableCell(withReuseIdentifier: "lvArtistCell", for: indexPath) as! LvArtistCell
-            cell3.artistNameLabel.text = lvSanatciData[indexPath.row].sanatciAdi
-            return cell3
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lvArtistCell", for: indexPath) as! LvArtistCell
+            cell.artistNameLabel.text = lvSanatciData[indexPath.row].sanatciAdi
+            return cell
         }else if collectionView == self.lvSoungCollectionView{
-            let cell4 = collectionView.dequeueReusableCell(withReuseIdentifier: "lvSoungCell", for: indexPath) as! LvSoungCell
-            cell4.soungNameLabel.text = lvSarkiData[indexPath.row].sanatciAdi
-            return cell4
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lvSoungCell", for: indexPath) as! LvSoungCell
+            cell.soungNameLabel.text = lvSarkiData[indexPath.row].sanatciAdi
+            return cell
         }
         
         return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == self.mpArtistCollectionView{
+            let sanatci = mpSanatciData[indexPath.row]
+            
+            artistNameAndId = ("\(sanatci.sanatciAdi)", "sanatciId = \(sanatci.id)")
+            performSegue(withIdentifier: "homeToArtist", sender: artistNameAndId)
+        }else if collectionView == self.mpSoungCollectionView{
+            
+        }else if collectionView == self.lvArtistCollectionView{
+            
+        }else if collectionView == self.lvSoungCollectionView{
+            
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "homeToArtist"{
+            let artistNameAndIdData = sender as? (String,String)
+            let destinationVC = segue.destination as! SoungsViewController
+            destinationVC.artistNameAndIdData = artistNameAndIdData
+        }
     }
 }
 

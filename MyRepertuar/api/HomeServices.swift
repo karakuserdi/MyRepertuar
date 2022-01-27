@@ -12,7 +12,7 @@ class HomeServices{
     static let shared = HomeServices()
     let baseURL = "https://www.myrepertuar.com/api/json/"
     
-    func getHomeDatas(sanatci:[Int], sarki:[Int], completion: @escaping([SanatciData],[SanatciData],[LastSarkiData]) -> Void){
+    func getHomeDatas(sanatci:[Int], sarki:[Int], completion: @escaping([SanatciData],[SarkiData],[SanatciData],[LastSarkiData]) -> Void){
         let params: Parameters = ["requests":["mostPopularSanatcis",
                                               "mostPopularSarkis",
                                               "lastVisitedSanatcis",
@@ -22,7 +22,7 @@ class HomeServices{
         ]
         
         var mpSanatci  = [SanatciData]()
-        //var mpSarki  = [SanatciData]()
+        var mpSarki  = [SarkiData]()
         var lvSanatci  = [SanatciData]()
         var lvSarki  = [LastSarkiData]()
         
@@ -31,24 +31,21 @@ class HomeServices{
             
 
             if let data = response.data{
-                //let utf8Text = String(data: data, encoding: .utf8)
-                //print(utf8Text)
+//                let utf8Text = String(data: data, encoding: .utf8)
+//                print(utf8Text)
                 
                 do {
                     let veri = try JSONDecoder().decode(HomeModelIn.self, from: data)
-                    //print(veri.mostPopularSanatcis) ***
-                    //print(veri.mostPopularSarkis) // veri bazen geliyor bazen gelmiyor
-                    //print(veri.lastVisitedSanatcis) ***
-                    //print(veri.lastVisitedSarkis) ***
+                    
                     
                     mpSanatci  = veri.mostPopularSanatcis.data
-                    //mpSarki  = veri.mostPopularSanatcis.data
-                    lvSanatci  = veri.lastVisitedSanatcis.data
-                    lvSarki  = veri.lastVisitedSarkis.data
+                    mpSarki  = veri.mostPopularSarkis.data
+                    lvSanatci  = veri.lastVisitedSanatcis?.data ?? [SanatciData]()
+                    lvSarki  = veri.lastVisitedSarkis?.data ?? [LastSarkiData]()
                     
-                    completion(lvSanatci,mpSanatci,lvSarki)
+                    completion(lvSanatci,mpSarki,mpSanatci,lvSarki)
                 } catch {
-                    completion(lvSanatci,mpSanatci,lvSarki)
+                    completion(lvSanatci,mpSarki,mpSanatci,lvSarki)
                     print(error)
                 }
             }
