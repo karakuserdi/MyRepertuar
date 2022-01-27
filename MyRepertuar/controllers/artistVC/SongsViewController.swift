@@ -7,10 +7,10 @@
 
 import UIKit
 
-class SoungsViewController: UIViewController {
+class SongsViewController: UIViewController {
     
     var artistId:String?
-    var soungList = [SarkiList]()
+    var songList = [SarkiList]()
     var isLoad = false
     var pageNumber:Int = 1
     var soung:(String,Int)?
@@ -36,7 +36,7 @@ class SoungsViewController: UIViewController {
             isLoad = true
             RepertuarServices.shared.getSarkiList(page: pageNumber, search: "", preFilter: artistNameAndIdData.1) { list in
                 for i in list{
-                    self.soungList.append(i)
+                    self.songList.append(i)
                 }
                 
                 DispatchQueue.main.async {
@@ -51,20 +51,20 @@ class SoungsViewController: UIViewController {
     
 }
 
-extension SoungsViewController:UITableViewDelegate, UITableViewDataSource{
+extension SongsViewController:UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return soungList.count
+        return songList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "artistCell", for: indexPath) as! SoungCell
-        let soung = soungList[indexPath.row]
+        let soung = songList[indexPath.row]
         cell.artistNameLabel.text = soung.sarkiAdi
         return cell
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let lastData = soungList.count - 1
+        let lastData = songList.count - 1
         if !isLoad && indexPath.row == lastData{
             pageNumber += 1
             self.fetchArtists()
@@ -72,7 +72,7 @@ extension SoungsViewController:UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let soungRow = soungList[indexPath.row]
+        let soungRow = songList[indexPath.row]
         soung = ("\(soungRow.sanatciAdi) - \(soungRow.sarkiAdi)", soungRow.id)
         performSegue(withIdentifier: "lyricVC", sender: soung)
         tableView.deselectRow(at: indexPath, animated: true)

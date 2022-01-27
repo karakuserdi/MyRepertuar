@@ -152,7 +152,7 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "homeToArtist"{
             let artistNameAndIdData = sender as? (String,String)
-            let destinationVC = segue.destination as! SoungsViewController
+            let destinationVC = segue.destination as! SongsViewController
             destinationVC.artistNameAndIdData = artistNameAndIdData
         }
     }
