@@ -9,7 +9,8 @@ import UIKit
 
 class MpSoungCell: UICollectionViewCell {
     
-    @IBOutlet weak var soungNameLabel: UILabel!
+    @IBOutlet weak var songNameLabel: UILabel!
+    @IBOutlet weak var songArtistNameLabel: UILabel!
     @IBOutlet weak var nameLabelView: UIView!
     
     override init(frame: CGRect) {

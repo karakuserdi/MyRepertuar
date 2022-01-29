@@ -16,6 +16,10 @@ class SongsViewController: UIViewController {
     var soung:(String,Int)?
     var artistNameAndIdData:(String,String)?
     
+    //Save artist ids to user defaults
+    var lastViewArtists = UserDefaults.standard.array(forKey: "artistIDs") as? [Int] ?? []
+
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -24,7 +28,34 @@ class SongsViewController: UIViewController {
         tableView.dataSource = self
         
         fetchArtists()
+        
+        //save id to userdefaults
+        if let artistNameAndIdData = artistNameAndIdData {
+            let artistID = artistNameAndIdData.1.components(separatedBy:CharacterSet.decimalDigits.inverted).joined()
+            if let id = Int(artistID){
+                artistId(id: id)
+            }
+        }
     }
+    
+    
+    //User defaults
+    func artistId(id:Int){
+        if lastViewArtists.contains(id){
+            if let index = lastViewArtists.firstIndex(of: id) {
+                lastViewArtists.remove(at: index)
+            }
+        }
+        
+        if lastViewArtists.count >= 12{
+            lastViewArtists.remove(at: 0)
+        }
+        
+        lastViewArtists.append(id)
+        UserDefaults.standard.set(lastViewArtists, forKey: "artistIDs")
+    }
+    
+    
     
     //MARK: - Fetch artists
     func fetchArtists(){
@@ -47,6 +78,8 @@ class SongsViewController: UIViewController {
             }
         }
     }
+    
+    
     
     
 }
@@ -82,7 +115,7 @@ extension SongsViewController:UITableViewDelegate, UITableViewDataSource{
         if segue.identifier == "lyricVC"{
             let artistNameAndSoung = sender as! (String,Int)
             let destinationVC = segue.destination as! LyricViewController
-            destinationVC.soung = artistNameAndSoung
+            destinationVC.song = artistNameAndSoung
         }
     }
 }

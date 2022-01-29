@@ -9,9 +9,9 @@ import UIKit
 
 class LvSoungCell: UICollectionViewCell {
     
-    @IBOutlet weak var soungNameLabel: UILabel!
+    @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var nameLabelView: UIView!
-    
+    @IBOutlet weak var songArtistNameLabel: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

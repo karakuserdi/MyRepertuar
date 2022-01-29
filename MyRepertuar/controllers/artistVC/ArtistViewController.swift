@@ -14,9 +14,6 @@ class ArtistViewController: UIViewController, UITextFieldDelegate{
     var artistNameAndId:(String,String)?
     var sanatciList = [SanatciList]()
     
-    //Save artist ids to user defaults
-    var lastViewArtists = UserDefaults.standard.array(forKey: "artistIDs") as? [Int] ?? []
-    
     let letters = ["-","A","B","C","Ç","D","E","F","G","H","I","İ","J","K","L","M","N","O","Ö","P","Q","R","S","Ş","T","U","Ü","V","W","X","Y","Z"]
     let colors = ["blue", "orange", "red", "green", "black", "brown", "crimson", "darkturquoise", "hotpink", "mediumspringgreen", "olive", "orangered", "peru", "purple", "sienna", "slateblue", "tan", "tomato", "yellowgreen"]
     var searchQuery = ""
@@ -53,21 +50,7 @@ class ArtistViewController: UIViewController, UITextFieldDelegate{
         }
     }
     
-    //User defaults
-    func artistId(id:Int){
-        if lastViewArtists.contains(id){
-            if let index = lastViewArtists.firstIndex(of: id) {
-                lastViewArtists.remove(at: index)
-            }
-        }
-        
-        if lastViewArtists.count >= 12{
-            lastViewArtists.remove(at: 0)
-        }
-        
-        lastViewArtists.append(id)
-        UserDefaults.standard.set(lastViewArtists, forKey: "artistIDs")
-    }
+
 }
 
 //MARK: - UISearch
@@ -126,10 +109,7 @@ extension ArtistViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sanatci = sanatciList[indexPath.row]
-        
-        //save id to userdefaults
-        artistId(id:sanatci.id)
-        
+       
         artistNameAndId = ("\(sanatci.sanatciAdi)", "sanatciId = \(sanatci.id)")
         performSegue(withIdentifier: "artistVC", sender: artistNameAndId)
         tableView.deselectRow(at: indexPath, animated: true)
