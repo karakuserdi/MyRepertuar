@@ -9,8 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    var homeView:MostPopulerArtistHomeViewModel?
-
+    //MARK: - Properties
     var lastViewArtists = [Int]()
     var lastViewSong = [Int]()
     
@@ -41,9 +40,10 @@ class HomeViewController: UIViewController {
         lvSarkiData.removeAll()
         lastViewArtists = UserDefaults.standard.array(forKey: "artistIDs") as? [Int] ?? []
         lastViewSong = UserDefaults.standard.array(forKey: "songIDs") as? [Int] ?? []
-        getHomeData()
+        fetcHomeData()
     }
     
+    //MARK: - View for first launch
     func ovarlayView(){
         overlay = UIView(frame: view.frame)
         let loadingIndicator = UIActivityIndicatorView()
@@ -68,14 +68,15 @@ class HomeViewController: UIViewController {
         lvArtistCollectionView.collectionViewLayout = collectionViewLayoutFunc(lvArtistCollectionView)
     }
     
-    func getHomeData(){
+    //MARK: - fetcHomeData
+    func fetcHomeData(){
         HomeServices.shared.getHomeDatas(sanatci: lastViewArtists, sarki: lastViewSong){ lvSanatci,mpSarki,mpSanatci,lvSarki  in
             DispatchQueue.main.async {
                 //Load most popular sanatci
                 self.mpSanatciData = mpSanatci
                 self.mpSarkiData = mpSarki
  
-                //load last visid sanatci
+                //load last visit sanatci
                 for lastViewArtist in self.lastViewArtists.reversed() {
                     for lvSanatci in lvSanatci {
                         if lvSanatci.id == lastViewArtist{
@@ -103,6 +104,10 @@ class HomeViewController: UIViewController {
                     self.lvSarkiData.append(emptyData)
                 }
                 
+                print("**********************************************")
+                print("lv sanatci: \(self.lvSanatciData.count) - user defaults\(self.lastViewArtists.count)")
+                print("lv sarki: \(self.lvSarkiData.count) - user defaults\(self.lastViewSong.count)")
+                
                 //reload tableview after fetch all data
                 self.mpArtistCollectionView.reloadData()
                 self.mpSoungCollectionView.reloadData()
@@ -118,6 +123,7 @@ class HomeViewController: UIViewController {
     
 }
 
+//MARK: - LyricViewControllerDelegate
 extension HomeViewController:LyricViewControllerDelegate{
     func dismissLyricViewController(model: UIViewController) {
         ovarlayView()
@@ -125,11 +131,11 @@ extension HomeViewController:LyricViewControllerDelegate{
         lvSarkiData.removeAll()
         lastViewArtists = UserDefaults.standard.array(forKey: "artistIDs") as? [Int] ?? []
         lastViewSong = UserDefaults.standard.array(forKey: "songIDs") as? [Int] ?? []
-        getHomeData()
+        fetcHomeData()
     }
 }
 
-
+//MARK: - UICollectionViewDelegate,UICollectionViewDataSource
 extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.mpArtistCollectionView{
@@ -160,11 +166,15 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
             
         }else if collectionView == self.lvArtistCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lvArtistCell", for: indexPath) as! LvArtistCell
+            // ???????
+            print("lv sanatci ????: \(self.lvSanatciData.count) - user defaults\(self.lastViewArtists.count)")
             cell.viewModel = LastViewArtistHomeViewModel(lvArsits: lvSanatciData[indexPath.row])
             return cell
             
         }else if collectionView == self.lvSoungCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lvSoungCell", for: indexPath) as! LvSoungCell
+            //???????
+            print("lv sarki ????: \(self.lvSarkiData.count) - user defaults\(self.lastViewSong.count)")
             cell.viewModel = LastSongHomeViewModel(lvSong: lvSarkiData[indexPath.row])
             return cell
         }
@@ -216,6 +226,7 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
     }
 }
 
+//MARK: - collectionViewLayoutFunc
 extension HomeViewController{
     //Datasource, delegate and flowlayout for collectionview
     func collectionViewLayoutFunc(_ collectionView: UICollectionView) -> UICollectionViewFlowLayout{
