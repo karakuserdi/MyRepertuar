@@ -9,6 +9,12 @@ import UIKit
 
 class MpArtistsCell: UICollectionViewCell {
     
+    var viewModel: MostPopulerArtistHomeViewModel?{
+        didSet{
+            configure()
+        }
+    }
+    
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var nameLabelView: UIView!
     
@@ -27,6 +33,15 @@ class MpArtistsCell: UICollectionViewCell {
         
         nameLabelView.layer.masksToBounds = false
 
+    }
+    
+    func configure(){
+        guard let viewModel = viewModel else {
+            return
+        }
+        
+        nameLabelView.backgroundColor = UIColor(named: viewModel.colorName ?? "blue")
+        artistNameLabel.text = viewModel.artistName
     }
     
     required init?(coder: NSCoder) {

@@ -8,6 +8,8 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    
+    var homeView:MostPopulerArtistHomeViewModel?
 
     var lastViewArtists = [Int]()
     var lastViewSong = [Int]()
@@ -21,9 +23,6 @@ class HomeViewController: UIViewController {
     var mpSarkiData = [SarkiData]()
     
     var overlay : UIView?
-    
-    let letters = ["-","A","B","C","Ç","D","E","F","G","H","I","İ","J","K","L","M","N","O","Ö","P","Q","R","S","Ş","T","U","Ü","V","W","X","Y","Z"]
-    let colors = ["blue", "orange", "red", "green", "black", "brown", "crimson", "darkturquoise", "hotpink", "mediumspringgreen", "olive", "orangered", "peru", "purple", "sienna", "slateblue", "tan", "tomato", "yellowgreen"]
     
     @IBOutlet weak var mpArtistCollectionView: UICollectionView!
     @IBOutlet weak var mpSoungCollectionView: UICollectionView!
@@ -151,54 +150,22 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.mpArtistCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mpArtistsCell", for: indexPath) as! MpArtistsCell
-            let sanatci = mpSanatciData[indexPath.row]
-            
-            //Cell colors
-            let firstChar = Array(sanatci.sanatciAdi)[0]
-            let rowColor = colors[(letters.firstIndex(of: "\(firstChar)") ?? 0) % colors.count]
-            cell.nameLabelView.backgroundColor = UIColor(named: rowColor)
-
-            
-            cell.artistNameLabel.text = sanatci.sanatciAdi
+            cell.viewModel = MostPopulerArtistHomeViewModel(mpSanatci: mpSanatciData[indexPath.row])
             return cell
             
         }else if collectionView == self.mpSoungCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mpSoungCell", for: indexPath) as! MpSoungCell
-            let sarki = mpSarkiData[indexPath.row]
-            
-            //Cell colors
-            let firstChar = Array(sarki.sanatciAdi)[0]
-            let rowColor = colors[(letters.firstIndex(of: "\(firstChar)") ?? 0) % colors.count]
-            cell.nameLabelView.backgroundColor = UIColor(named: rowColor)
-            
-            cell.songNameLabel.text = sarki.sanatciAdi
-            cell.songArtistNameLabel.text = sarki.sarkiAdi
+            cell.viewModel = MostPopulerSongHomeViewModel(mpSong: mpSarkiData[indexPath.row])
             return cell
             
         }else if collectionView == self.lvArtistCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lvArtistCell", for: indexPath) as! LvArtistCell
-            let sanatci = lvSanatciData[indexPath.row]
-            
-            //Cell colors
-            let firstChar = Array(sanatci.sanatciAdi)[0]
-            let rowColor = colors[(letters.firstIndex(of: "\(firstChar)") ?? 0) % colors.count]
-            cell.nameLabelView.backgroundColor = UIColor(named: rowColor)
-
-            cell.artistNameLabel.text = sanatci.sanatciAdi
+            cell.viewModel = LastViewArtistHomeViewModel(lvArsits: lvSanatciData[indexPath.row])
             return cell
             
         }else if collectionView == self.lvSoungCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lvSoungCell", for: indexPath) as! LvSoungCell
-            let sarki = lvSarkiData[indexPath.row]
-            
-            
-            //Cell colors
-            let firstChar = Array(sarki.sanatciAdi)[0]
-            let rowColor = colors[(letters.firstIndex(of: "\(firstChar)") ?? 0) % colors.count]
-            cell.nameLabelView.backgroundColor = UIColor(named: rowColor)
-            
-            cell.songNameLabel.text = sarki.sanatciAdi
-            cell.songArtistNameLabel.text = sarki.sarkiAdi
+            cell.viewModel = LastSongHomeViewModel(lvSong: lvSarkiData[indexPath.row])
             return cell
         }
         

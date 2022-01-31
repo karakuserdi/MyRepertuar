@@ -7,22 +7,27 @@
 
 import UIKit
 
-protocol LyricViewControllerDelegate{
+//MARK: - Protocol for trigger HomeViewController to fetch home data
+protocol LyricViewControllerDelegate: AnyObject{
     func dismissLyricViewController(model: UIViewController)
 }
 
 class LyricViewController: UIViewController {
     
+    
+    //MARK: - Properties
     var song:(String,Int)?
+    weak var delegate:LyricViewControllerDelegate?
+
     
     //Save artist ids to user defaults
     var lastViewSong = UserDefaults.standard.array(forKey: "songIDs") as? [Int] ?? []
-
+    
     @IBOutlet weak var artistAndSoungNameLabel: UILabel!
     @IBOutlet weak var soungLyricTextView: UITextView!
     @IBOutlet weak var closeLineView: UIView!
-    var delegate:LyricViewControllerDelegate?
     
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -63,6 +68,7 @@ class LyricViewController: UIViewController {
     }
     
     
+    //MARK: - fetchLyric
     func fetchLyric(){
         if let soung = song {
             artistAndSoungNameLabel.text = soung.0

@@ -9,6 +9,12 @@ import UIKit
 
 class LvArtistCell: UICollectionViewCell {
     
+    var viewModel:LastViewArtistHomeViewModel?{
+        didSet{
+            configure()
+        }
+    }
+    
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var nameLabelView: UIView!
     
@@ -27,6 +33,15 @@ class LvArtistCell: UICollectionViewCell {
         
         nameLabelView.layer.masksToBounds = false
 
+    }
+    
+    func configure(){
+        guard let viewModel = viewModel else {
+            return
+        }
+        
+        artistNameLabel.text = viewModel.artistName
+        nameLabelView.backgroundColor = UIColor(named: viewModel.colorName ?? "blue")
     }
     
     required init?(coder: NSCoder) {

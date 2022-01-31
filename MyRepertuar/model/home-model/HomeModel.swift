@@ -33,12 +33,6 @@ struct LastSarkiData:Codable{
     let sarkiAdi:String
 }
 
-//LastVisitedSanatcis
-struct LastVisitedSanatcis:Codable{
-    let data:[SanatciData]
-    let maxPopularity:Int
-}
-
 
 //MostPopularSarkis
 struct MostPopularSarkis:Codable{
@@ -56,6 +50,13 @@ struct SarkiData:Codable{
     let numOfAddedRepts:Int
     let link:String
     let sanatciLink:String
+}
+
+
+//LastVisitedSanatcis
+struct LastVisitedSanatcis:Codable{
+    let data:[SanatciData]
+    let maxPopularity:Int
 }
 
 //MostPopularSanatcis

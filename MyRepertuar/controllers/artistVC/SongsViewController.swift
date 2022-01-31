@@ -9,6 +9,7 @@ import UIKit
 
 class SongsViewController: UIViewController {
     
+    //MARK: - Properties
     var artistId:String?
     var songList = [SarkiList]()
     var isLoad = false
@@ -22,6 +23,8 @@ class SongsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -78,12 +81,9 @@ class SongsViewController: UIViewController {
             }
         }
     }
-    
-    
-    
-    
 }
 
+//MARK: - UITableViewDelegate, UITableViewDataSource
 extension SongsViewController:UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return songList.count
@@ -91,8 +91,7 @@ extension SongsViewController:UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "artistCell", for: indexPath) as! SoungCell
-        let soung = songList[indexPath.row]
-        cell.artistNameLabel.text = soung.sarkiAdi
+        cell.viewModel = SongsViewModel(song: songList[indexPath.row])
         return cell
     }
     
@@ -111,6 +110,7 @@ extension SongsViewController:UITableViewDelegate, UITableViewDataSource{
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    //MARK: - Prepare
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "lyricVC"{
             let artistNameAndSoung = sender as! (String,Int)
