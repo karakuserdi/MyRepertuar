@@ -68,7 +68,7 @@ class SongsViewController: UIViewController {
             }
             
             isLoad = true
-            RepertuarServices.shared.getSarkiList(page: pageNumber, search: "", preFilter: artistNameAndIdData.1) { list in
+            ArtistServices.shared.fetchSongList(page: pageNumber, search: "", preFilter: artistNameAndIdData.1) { list in
                 for i in list{
                     self.songList.append(i)
                 }

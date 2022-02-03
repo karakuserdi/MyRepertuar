@@ -30,6 +30,7 @@ struct SarkiList:Codable{
     let numOfAddedRepts:Int
     let sarkiLink:String
     let sanatciLink:String
+    let youtubeSearchLink:String?
 }
 
 

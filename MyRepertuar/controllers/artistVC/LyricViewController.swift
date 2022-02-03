@@ -23,15 +23,15 @@ class LyricViewController: UIViewController {
     //Save artist ids to user defaults
     var lastViewSong = UserDefaults.standard.array(forKey: "songIDs") as? [Int] ?? []
     
-    @IBOutlet weak var artistAndSoungNameLabel: UILabel!
     @IBOutlet weak var soungLyricTextView: UITextView!
-    @IBOutlet weak var closeLineView: UIView!
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
         fetchLyric()
+        
+        //Font settings
+        //soungLyricTextView.font = .systemFont(ofSize: 40)
         
         //save id to userdefaults
         if let song = song {
@@ -62,24 +62,15 @@ class LyricViewController: UIViewController {
     }
     
     
-    //MARK: - Configure UI
-    func configureUI(){
-        closeLineView.layer.cornerRadius = 4
-    }
-    
-    
     //MARK: - fetchLyric
     func fetchLyric(){
         if let soung = song {
-            artistAndSoungNameLabel.text = soung.0
-            RepertuarServices.shared.getSarkiSozu(id: soung.1) { lyric in
+            navigationItem.title = soung.0
+            ArtistServices.shared.fetchSongLyric(id: soung.1) { lyric in
                 DispatchQueue.main.async {
                     self.soungLyricTextView.text = lyric
                 }
             }
         }
     }
-    
-    
-    
 }

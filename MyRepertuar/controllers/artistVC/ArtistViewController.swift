@@ -42,7 +42,7 @@ class ArtistViewController: UIViewController, UITextFieldDelegate{
             searchQuery = ""
         }
         
-        RepertuarServices.shared.getSanatciList(model: SanatcilarOut(filterObj: FilterObj(preFilter: "", sanatciAdi: searchQuery, sanatciAdiSearchType: "startsWith"), itemsPerPage: 50, pageNum: pageNumber, sortBy: SortBy(column: "numOfClicks", direction: "desc"))) { result in
+        ArtistServices.shared.fetchArtistList(model: SanatcilarOut(filterObj: FilterObj(preFilter: "", sanatciAdi: searchQuery, sanatciAdiSearchType: "startsWith"), itemsPerPage: 50, pageNum: pageNumber, sortBy: SortBy(column: "numOfClicks", direction: "desc"))) { result in
             DispatchQueue.main.async {
                 for i in result{
                     self.sanatciList.append(i)
@@ -58,21 +58,22 @@ class ArtistViewController: UIViewController, UITextFieldDelegate{
 //MARK: - UISearch
 extension ArtistViewController: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        timer.invalidate()
-        
         if searchText.isEmpty{
             self.searchQuery = ""
             self.pageNumber = 1
             self.sanatciList.removeAll()
             self.fetchSanatciList()
+            self.tableView.reloadData()
+            print("deneme")
+        }else{
+            timer.invalidate()
+            timer = Timer.scheduledTimer(withTimeInterval: 0.8, repeats: false, block: {  timer in
+                self.searchQuery = searchText
+                self.pageNumber = 1
+                self.sanatciList.removeAll()
+                self.fetchSanatciList()
+            })
         }
-        
-        timer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: {  timer in
-            self.searchQuery = searchText
-            self.pageNumber = 1
-            self.sanatciList.removeAll()
-            self.fetchSanatciList()
-        })
     }
 }
 
@@ -101,7 +102,7 @@ extension ArtistViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sanatci = sanatciList[indexPath.row]
-       
+        
         artistNameAndId = ("\(sanatci.sanatciAdi)", "sanatciId = \(sanatci.id)")
         performSegue(withIdentifier: "artistVC", sender: artistNameAndId)
         tableView.deselectRow(at: indexPath, animated: true)

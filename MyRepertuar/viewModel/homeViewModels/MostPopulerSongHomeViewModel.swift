@@ -23,7 +23,7 @@ struct MostPopulerSongHomeViewModel{
         let letters = ["-","A","B","C","Ç","D","E","F","G","H","I","İ","J","K","L","M","N","O","Ö","P","Q","R","S","Ş","T","U","Ü","V","W","X","Y","Z"]
         let colors = ["blue", "orange", "red", "green", "black", "brown", "crimson", "darkturquoise", "hotpink", "mediumspringgreen", "olive", "orangered", "peru", "purple", "sienna", "slateblue", "tan", "tomato", "yellowgreen"]
         
-        let firstChar = Array(mpSong.sanatciAdi)[0]
+        let firstChar = Array(mpSong.sarkiAdi)[0]
         let rowColor = colors[(letters.firstIndex(of: "\(firstChar)") ?? 0) % colors.count]
         return rowColor
     }

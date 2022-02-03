@@ -39,7 +39,7 @@ class MainTabController: UITabBarController {
     }
     
     func fetchSanatciList(){
-        RepertuarServices.shared.getSanatciList(model: SanatcilarOut(filterObj: FilterObj(preFilter: "", sanatciAdi: "", sanatciAdiSearchType: "startsWith"), itemsPerPage: 10, pageNum: 1, sortBy: SortBy(column: "numOfClicks", direction: "desc"))) { result in
+        ArtistServices.shared.fetchArtistList(model: SanatcilarOut(filterObj: FilterObj(preFilter: "", sanatciAdi: "", sanatciAdiSearchType: "startsWith"), itemsPerPage: 10, pageNum: 1, sortBy: SortBy(column: "numOfClicks", direction: "desc"))) { result in
                 for i in result{
                     self.sanatciList.append(i)
                 }

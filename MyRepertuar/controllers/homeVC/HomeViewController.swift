@@ -40,6 +40,11 @@ class HomeViewController: UIViewController {
         lvSarkiData.removeAll()
         lastViewArtists = UserDefaults.standard.array(forKey: "artistIDs") as? [Int] ?? []
         lastViewSong = UserDefaults.standard.array(forKey: "songIDs") as? [Int] ?? []
+        for i in lastViewSong{
+            print("will apear: \(i)")
+        }
+        print("***********")
+        
         fetcHomeData()
     }
     
@@ -71,7 +76,7 @@ class HomeViewController: UIViewController {
     //MARK: - fetcHomeData
     func fetcHomeData(){
         HomeServices.shared.getHomeDatas(sanatci: lastViewArtists, sarki: lastViewSong){ lvSanatci,mpSarki,mpSanatci,lvSarki  in
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [self] in
                 //Load most popular sanatci
                 self.mpSanatciData = mpSanatci
                 self.mpSarkiData = mpSarki
@@ -84,12 +89,7 @@ class HomeViewController: UIViewController {
                         }
                     }
                 }
-            
-                if self.lvSanatciData.isEmpty{
-                    let emptyData = SanatciData(id: -1, link: "", numOfClicks: 0, sanatciAdi: "Sanatçılar boş! \n\n Hemen sanatçılara göz at...")
-                    self.lvSanatciData.append(emptyData)
-                }
-               
+
                 //load last visid sarki
                 for lastViewSong in self.lastViewSong.reversed() {
                     for lvSarki in lvSarki {
@@ -98,15 +98,6 @@ class HomeViewController: UIViewController {
                         }
                     }
                 }
-                
-                if self.lvSarkiData.isEmpty{
-                    let emptyData = LastSarkiData(albumAdi: "", id: -1, link: "", numOfAddedRepts: "", numOfClicks: 0, sanatciAdi: "Şarkılar boş!", sanatciId: "", sanatciLink: "", sarkiAdi: "Hemen şarkılara göz at...")
-                    self.lvSarkiData.append(emptyData)
-                }
-                
-                print("**********************************************")
-                print("lv sanatci: \(self.lvSanatciData.count) - user defaults\(self.lastViewArtists.count)")
-                print("lv sarki: \(self.lvSarkiData.count) - user defaults\(self.lastViewSong.count)")
                 
                 //reload tableview after fetch all data
                 self.mpArtistCollectionView.reloadData()
@@ -131,12 +122,30 @@ extension HomeViewController:LyricViewControllerDelegate{
         lvSarkiData.removeAll()
         lastViewArtists = UserDefaults.standard.array(forKey: "artistIDs") as? [Int] ?? []
         lastViewSong = UserDefaults.standard.array(forKey: "songIDs") as? [Int] ?? []
+        
+        for i in lastViewSong{
+            print(i)
+        }
+        print("***********")
+        
         fetcHomeData()
     }
 }
 
 //MARK: - UICollectionViewDelegate,UICollectionViewDataSource
 extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSource{
+//
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        if collectionView == lvSoungCollectionView{
+//            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath)
+//
+//            return header
+//        }
+//
+//        return UICollectionReusableView()
+//    }
+//
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.mpArtistCollectionView{
             return mpSanatciData.count
@@ -146,8 +155,8 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
             
         }else if collectionView == self.lvArtistCollectionView{
             return lvSanatciData.count
-            
         }else if collectionView == self.lvSoungCollectionView{
+            //lvSoungCollectionView.heightAnchor.constraint(equalToConstant: 0).isActive = true
             return lvSarkiData.count
         }
         return 0
@@ -166,15 +175,13 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
             
         }else if collectionView == self.lvArtistCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lvArtistCell", for: indexPath) as! LvArtistCell
-            // ???????
-            print("lv sanatci ????: \(self.lvSanatciData.count) - user defaults\(self.lastViewArtists.count)")
+            
             cell.viewModel = LastViewArtistHomeViewModel(lvArsits: lvSanatciData[indexPath.row])
             return cell
             
         }else if collectionView == self.lvSoungCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lvSoungCell", for: indexPath) as! LvSoungCell
-            //???????
-            print("lv sarki ????: \(self.lvSarkiData.count) - user defaults\(self.lastViewSong.count)")
+            
             cell.viewModel = LastSongHomeViewModel(lvSong: lvSarkiData[indexPath.row])
             return cell
         }
@@ -211,6 +218,7 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
             performSegue(withIdentifier: "homeToLyric", sender: artistNameAndId2)
         }
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "homeToArtist"{
